@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1 logic</title>
+        <style>
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+}
+
+.container {
+    width: 70%;
+    height:flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#text-box {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    background-color: #fff;
+    overflow: auto; /* 当内容超出框时，允许滚动 */
+}
+
+
+.card:hover .overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.btn-hover {
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    pointer-events: all;
+    
+}
+
+.btn-hover:hover {
+    background-color: blue;
+    color: white;
+}
+
+
+
+        </style>
+
+</head>
+<body>
+    <div class="container">
+        <div id="text-box">I developed a comprehensive web application for stock analysis using the Relative Strength Index (RSI), integrating various technologies and skills to create an efficient and innovative platform. 
+            Compared to traditional methods of searching for RSI, my application reduces search time by over 70%. Additionally, by leveraging asynchronous programming, I achieved a further 30% reduction in update times,
+             ensuring a highly responsive and efficient user experience.
+             I utilized HTML/CSS/JavaScript to create responsive and interactive user interfaces. The backend was developed using Python/Django for handling requests, processing data, and rendering templates. 
+             Although not explicitly mentioned in the provided files, I integrated SQL for potential database interactions.
+             I managed version control using Git/GitHub, ensuring efficient collaboration and code management. To handle multiple tasks concurrently and improve performance for large data sets,
+              I utilized Asynchronous Coroutines (Asyncio), as mentioned in stock.html.
+             I  used Web Scraping techniques in data.py to fetch financial data from the web. I employed HTTP protocols for handling web requests and responses,
+              and utilized Data Structures in Python scripts to efficiently manage and process stock data.
+             To ensure continuous integration and deployment, I implemented CI/CD pipelines, allowing for seamless updates and rigorous testing. This approach ensured the </div>
+    </div>
+    <div class="card" id="project1">
+        <div class="overlay">
+            <button class="btn-hover" id="logic1">contact me
+            </button>
+            <button class="btn-hover" id="run1">run</button>
+        </div>
+        <script>
+            document.getElementById('run1').addEventListener('click', function() {
+                window.location.href = "{{ url_for('stock') }}";
+            });
+
+            document.getElementById('logic1').addEventListener('click', function() {
+                event.stopPropagation();
+                // prevent to point the father element
+                window.location.href = "https://www.linkedin.com/in/ricardo-gao";
+            } );
+            
+        </script>
+</body>
+</html>

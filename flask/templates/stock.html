@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+    stock
+{% endblock %}
+
+{% block style %}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+}
+{% endblock %}
+
+{% block body %}
+<h1>Function 1.</h1>
+<h2>search the stock price and automatic generate the picture of the stock market</h2>
+<h3>for example (NVDA CVS BABA AAPL)</h3>
+<form action="/search" method="post">
+    <label for="stock">stock number</label>
+    <input type="text" id="stock" name="stock" autofocus placeholder="stock name">
+    <button type="submit">search</button>
+</form>
+<h1>Function 2.</h1>
+<h2>dynamic seach the RSI of the most 100 company in the world</h2>
+<form action="/rsi" method="post">
+    <button> low valuation for top 100</button>
+    <h2>they need deal about 100 company with the asyncio. so plz be patient</h2>
+
+</form>
+<h1>Function 1.</h1>
+<h2>static seach the RSI of the company which have the CDR in the Canada market</h2>
+<form action="/cdr" method="post">
+    <button> low valuation for CDR</button>
+    <h2>they need deal about 40 company with the asyncio. so plz be patient</h2>
+</form>
+<div class="video-container">
+    <video controls>
+        <!-- make a video place for the video -->
+        <source src="static/1.mov" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}
+    profile
+{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+{% block style %}
+{% endblock %}
+{% block body %}
+<nav class="navbar">
+    <ul class="navbar-menu">
+        <li><a href="#">Myself</a></li>
+        <li class="dropdown">
+            <a href="#">Project</a>
+            <ul class="dropdown-menu">
+                <li><a href="{{url_for('bird')}}"></a>NeuroGenetic AI Optimization for Flappy Bird</li>
+                <li><a href="{{url_for('companyindex')}}">Automatically find jobs </a></li>
+                <li><a href="{{ url_for('stock') }}">RSI STOCK</a></li>
+            </ul>
+        </li>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+<form class="c">
+    <h1>RICARDO GAO</h1>
+    <h2>+1 382 885 2156</h2>
+    <h3><a href="https://www.linkedin.com/in/ricardo-gao">LinkedIn Profile</a></h3>
+    <h3><a href="https://github.com/RicadoGz">Github</a></h3>
+    <h3><a href="gaozhe0011@gmail.com">email</a></h3>
+    <h4>Canada,ON</h4>
+</form>
+<div class="container">
+    <div class="card" id="project1">
+        <div class="overlay">
+            <button class="btn-hover" id="logic1">logic</button>
+            <button class="btn-hover" id="run1">run</button>
+        </div>
+        <h2>NeuroGenetic AI Optimization for Flappy Bird</h2>
+    </div>
+    <div class="card" id="project2">
+        <div class="overlay">
+            <button class="btn-hover" id="logic2">logic</button>
+            <button class="btn-hover" id="run2">run</button>
+        </div>
+        <h2>Automatically find jobs</h2>
+    </div>
+    <div class="card" id="project3">
+        <div class="overlay">
+            <button class="btn-hover" id="logic3" >logic</button>
+            <button class="btn-hover" id="run3">run</button>
+        </div>
+        <h2>RSI STOCK</h2>
+    </div>
+</div>
+
+<script>
+    document.getElementById('run1').addEventListener('click', function() {
+        window.location.href = "{{url_for('bird')}}";
+    });
+    document.getElementById('run2').addEventListener('click', function() {
+        window.location.href = "{{url_for('companyindex')}}";
+    });
+    document.getElementById('run3').addEventListener('click', function() {
+        window.location.href = "{{ url_for('stock') }}"; 
+    });
+    document.getElementById('logic1').addEventListener('click', function() {
+        event.stopPropagation();
+        // prevent to point the father element
+        window.location.href = "{{ url_for('logic3') }}";
+    });
+    document.getElementById('logic2').addEventListener('click', function() {
+        event.stopPropagation();
+        // prevent to point the father element
+        window.location.href = "{{ url_for('logic2') }}";
+    });
+    document.getElementById('logic3').addEventListener('click', function() {
+        event.stopPropagation();
+        // prevent to point the father element
+        window.location.href = "{{ url_for('logic1') }}";
+    });
+</script>
+{% endblock %}

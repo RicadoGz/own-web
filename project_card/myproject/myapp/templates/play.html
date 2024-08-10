@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>play</title>
+    <style>
+        .container {
+            position: relative;
+            width:75vw;
+            height: 75vw;
+            border: 1px solid #000;
+            border-radius: 10%;
+            overflow: hidden;
+        }
+        .user {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: lightblue;
+        }
+        .card {
+            width: 50px;
+            height: 75px;
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+        #user1 {
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #user2 {
+            top: 50%;
+            left: 90%;
+            transform: translate(-50%, -50%);
+        }
+        #user3 {
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #user4 {
+            top: 50%;
+            left: 10%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <h1>Card Distribution</h1>
+    <div class="container" id="container">
+        <div class="user" id="user1">User 1</div>
+        <div class="user" id="user2">User 2</div>
+        <div class="user" id="user3">User 3</div>
+        <div class="user" id="user4">User 4</div>
+    </div>
+    <button id="dealButton">Deal Cards</button>
+
+</body>
+</html>
+
+

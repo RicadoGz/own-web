@@ -1,0 +1,23 @@
+提交文件的代码
+在VSCode终端中使用以下命令提交文件到Git仓库：
+
+添加所有文件到暂存区：
+
+bash
+Copy code
+git add .
+提交更改：
+
+bash
+Copy code
+git commit -m "你的提交信息"
+推送到远程仓库：
+
+bash
+Copy code
+git push -u origin main
+或者（如果使用master分支）：
+
+bash
+Copy code
+git push -u origin main

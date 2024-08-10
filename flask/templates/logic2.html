@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1 logic</title>
+        <style>
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+}
+
+.container {
+    width: 70%;
+    height:flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#text-box {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    background-color: #fff;
+    overflow: auto; /* 当内容超出框时，允许滚动 */
+}
+
+
+.card:hover .overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.btn-hover {
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    pointer-events: all;
+    
+}
+
+.btn-hover:hover {
+    background-color: blue;
+    color: white;
+}
+
+
+
+        </style>
+
+</head>
+<body>
+    <div class="container">
+        <div id="text-box">
+            
+The inspiration for developing this program came from a question I heard: "If you knew you could be successful, what project would you create?" Considering the current job market, I believe that helping people find real job opportunities is a valuable endeavor (and it would also help me find a job). 
+This program helps you locate software companies and apply for jobs directly through their websites, as I don't have much faith in LinkedIn. By using web scraping techniques on Google Maps, I've made it easier to discover potential employers. While these skills might not seem particularly fancy,
+ I believe that the ability to break down a large project into smaller, manageable tasks is far more important than learning flashy new technologies. 
+        </div>
+    </div>
+    <div class="card" id="project1">
+        <div class="overlay">
+            <button class="btn-hover" id="logic2">contact me
+            </button>
+            <button class="btn-hover" id="run2">run</button>
+        </div>
+        <script>
+            document.getElementById('run2').addEventListener('click', function() {
+                window.location.href = "{{url_for('companyindex')}}";
+            });
+
+            document.getElementById('logic2').addEventListener('click', function() {
+                event.stopPropagation();
+                // prevent to point the father element
+                window.location.href = "https://www.linkedin.com/in/ricardo-gao";
+            } );
+            
+        </script>
+</body>
+</html>

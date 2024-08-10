@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1 logic</title>
+        <style>
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+}
+
+.container {
+    width: 70%;
+    height:flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#text-box {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    background-color: #fff;
+    overflow: auto; /* 当内容超出框时，允许滚动 */
+}
+
+
+.card:hover .overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.btn-hover {
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    pointer-events: all;
+    
+}
+
+.btn-hover:hover {
+    background-color: blue;
+    color: white;
+}
+
+
+
+        </style>
+
+</head>
+<body>
+    <div class="container">
+        <div id="text-box">
+            
+            Developed an advanced Flappy Bird AI using Python, Pygame, and NEAT (NeuroEvolution of Augmenting Topologies),
+            more than 400 codes,a genetic algorithm-based approach, to evolve neural networks for optimal gameplay. By integrating
+            complex algorithms for fitness evaluation and environment simulation, the implementation showcased significant
+            improvements in AI performance, leading to a marked increase in the AI’s success rate and adaptive strategies over
+            generations.
+             Led the initiative to optimize the NEAT algorithm and genetic operations through rigorous testing and parameter tuning,
+            which resulted in a 50% improvement in convergence speed. The transition from basic genetic operations to more
+            sophisticated selection and mutation strategies contributed to a 40% enhancement in the AI’s ability to adapt to complex
+            game dynamics.
+        </div>
+    </div>
+    <div class="card" id="project1">
+        <div class="overlay">
+            <button class="btn-hover" id="logic3">contact me
+            </button>
+            <button class="btn-hover" id="run3">run</button>
+        </div>
+        <script>
+            document.getElementById('run3').addEventListener('click', function() {
+                window.location.href = "{{url_for('bird')}}";
+            });
+
+            document.getElementById('logic3').addEventListener('click', function() {
+                event.stopPropagation();
+                // prevent to point the father element
+                window.location.href = "https://www.linkedin.com/in/ricardo-gao";
+            } );
+            
+        </script>
+</body>
+</html>

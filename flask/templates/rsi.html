@@ -1,0 +1,21 @@
+#rsi.html
+{% extends "base.html" %}
+
+{% block title %}
+    rsi
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block body %}
+
+<h1>this is the oppturnite</h1>
+    <ul>
+        {%for i in first%}
+            <li>{{ i[0] }} - RSI {{ i[1] }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

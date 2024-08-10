@@ -1,0 +1,46 @@
+{% extends "company/base2.html" %}
+
+{% block style %}
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+    }
+    .container {
+        margin: 20px;
+    }
+    .form-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .input-right{
+        margin-left: auto;
+    }
+{% endblock %}
+
+{% block content %}
+    <form action="/company" method="post">
+        <div class="form-row">
+        <label for="userInput">Enter your address </label>
+        <input type="text" id ="address" name="address"><br>
+        </div>
+
+
+
+        <input type="radio" id="5km" name="z" value="15">
+        <label for="5km">5km</label><br>
+
+        <input type="radio" id="10km" name="z" value="14.5">
+        <label for="10km">10km</label><br>
+
+        <input type="radio" id="15km" name="z" value="14">
+        <label for="15km">15km</label><br>
+
+        <label for="userInput">Enter how pages you want(when the number+1 the time need 3 second more) </label>
+        <input type="text" class="input-right" name="page" placeholder="New input"><br>
+        <button type="submit">submit</button>
+    </form>
+{% endblock %}
+

@@ -1,0 +1,335 @@
+<!--draw_card.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>play</title>
+    <style>
+        .container {
+            position: relative;
+            width:75vw;
+            height: 75vw;
+            border: 1px solid #000;
+            border-radius: 10%;
+            overflow: hidden;
+        }
+        .user {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column; /* 垂直堆叠 */
+            align-items: center;
+            flex-wrap: wrap; /* 允许换行 */
+            justify-content: center;
+            padding: 3px; /* 添加内边距，使内容有一些空间 */
+            background-color: lightblue;
+        }
+        .card {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #000;
+            background-color: #fff;
+            margin: 10px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        #user1 {
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #user2 {
+            top: 50%;
+            left: 90%;
+            transform: translate(-50%, -50%);
+        }
+        #user3 {
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #user4 {
+            top: 50%;
+            left: 10%;
+            transform: translate(-50%, -50%);
+        }
+        #stop-game, #go-on-game {
+            /* if not have this will can not change it placement */
+    position: absolute; 
+}
+
+        #stop-game{
+            top: 70%;
+            left: 130%;
+            transform: translate(-50%, -50%);
+        }
+        #go-on-game{
+            top: 30%;
+            left: 130%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <h1>Card Distribution</h1>
+    <div class="container" id="container">
+        <div class="user" id="user1">User 1</div>
+        <div class="user" id="user2">User 2</div>
+        <div class="user" id="user3">{{name}}
+            <button id="stop-game" style="display: none;">Stop</button>
+            <button id="go-on-game" style="display: none;">GoOn</button>
+        </div>
+        <div class="user" id="user4">User 4</div>
+    </div>
+    <!-- add the button with start the game  -->
+    <button id="start-game">Start Game</button>
+    <div id="response-area"></div>
+    <!--this type is hidden so will not show and this can accetp data and protect-->
+    <input type="hidden" id="csrf-token" value="{{ csrf_token }}">
+    <input type="hidden" id="all-decks" value="{{ all_decks }}"> <!-- 这行添加了 -->
+    
+
+
+
+    <script>
+        // add an click event listener  
+        
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('start-game').addEventListener('click', function() {
+                    const csrftoken = document.getElementById('csrf-token').value;
+                   // this can change the element of the button 
+                    document.getElementById('start-game').style.display='none';
+                    document.getElementById('stop-game').style.display='inline';
+                    document.getElementById('go-on-game').style.display='inline';
+                     // get the value of decks see the 93line
+                    const allDecksValue = document.getElementById('all-decks').value;
+                    // this show the which road url
+                    fetch('/start_game/', {
+                method: 'POST',
+                  // use the POST method to call the function /start_game
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({
+                    message: 'start!',
+                    action:'',
+                    //make sure the all_decks 
+                    all_decks:allDecksValue
+                })
+            })
+            //translate the response and changes to the json
+            .then(response => response.json())
+            // show the start in the screen
+            .then(data => {
+                document.getElementById('response-area').innerText = data.response;
+                if (data.drawn_cards) {  // <!-- 这行添加了 -->
+                    displayCards(data.drawn_cards);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+// define an function to for the go - on -game
+        document.addEventListener('DOMContentLoaded',function(){
+            // tjod domcontent makesure read all the code and run the function
+            document.getElementById('go-on-game').addEventListener('click',function(){
+                const csrftoken = document.getElementById('csrf-token').value;
+                    // makesure the sequrity
+                    const allDecksValue = document.getElementById('all-decks').value;
+                    // get the alldecksvalue see the 93 line
+
+})
+})
+
+        // "define a function and can aceetp the """cards""
+        function displayCards(cards){
+            // list for the user which you want split
+            const users = [
+                document.getElementById('user1'),
+                document.getElementById('user2'),
+                document.getElementById('user3'),
+                document.getElementById('user4')
+            ];
+            // the index means 0-3 
+            users.forEach((user, index) => {
+        for (let i = 0; i < 2; i = i + 1) {
+            const card = cards[index+ i*4];
+            if (card) {
+                // 创建用于显示卡片的 div 元素
+                const cardElement = document.createElement('div');
+                cardElement.className = 'card';
+                cardElement.textContent = card.display;
+                // 将卡片元素添加到用户元素中
+                user.appendChild(cardElement);
+                }
+            }
+        });
+    };
+ });
+
+
+            document.getElementById('go-on-game').addEventListener('click', function() {
+                function goon(card){
+
+
+
+}
+
+            })
+
+    </script>
+</body>
+</html>
+
+
+<!-- function displayCards(cards){
+    const responseArea = document.getElementById('response-area')
+    //delete the area of before
+    responseArea.innerHTML='';
+    cards.forEach(card =>{
+        // creat the new element for show the card
+        const cardElement = document.createElement('div');
+        //make the class=card
+        cardElement.className='card';
+        //make the contect change to the card display
+        cardElement.textContent = card.display;
+        //add the div element to the cardElement
+        responseArea.appendChild(cardElement);
+
+
+    })
+} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--         let rowContainer = null;
+        let cardCounter = 0;
+        // transfer the decks_info to the javascript object
+        const decksInfo = JSON.parse(`{{ decks_info|escapejs }}`);
+        // the index of the number for card and +=
+        let currentCardIndex=0;
+        function dealCards() {
+                        // initate the number of the index for the card
+            const users = document.querySelectorAll('.user');
+            // the currentCardIndex is the number for the card the users.length was the nember of 
+            // ---people and %can calculate who was the next they number place
+            const userIndex=currentCardIndex % users.length;
+
+            // get the which user should get the car
+            const user = users[userIndex];
+            // card like a list to save the card from the python
+            let card;
+            // decks.length is how many for the whole card
+            for (let i = 0; i < decksInfo.length; i++) {
+                // this .cards is the really 52cards 
+                if (decksInfo[i].cards.length > 0) {
+                    card = decksInfo[i].cards.shift();
+                    break;
+                }
+            }
+            if (card){
+                //  it can add the div element
+                const cardDisplay = document.createElement('div');
+                // this can add the vluew for the element remerber not the ''''''''''
+                cardDisplay.textContent = `${card.display}`
+                cardDisplay.className='card'
+                if(cardCounter% 3===0){
+                    rowContainer = document.createElement('div');
+                    rowContainer.style.display='flex';
+                    rowContainer.style.flexDirection = 'column';
+                    user.appendChild(rowContainer)
+                }
+
+                rowContainer.appendChild(cardDisplay);
+                cardCounter++;
+                currentCardIndex++;
+            }else{
+                alert("no more cards should begain again")
+            }
+
+        }
+                    // document is show the all html and can control the element
+            // getelementbyid can use the id to call the obejct
+            // add event---- when click that
+            
+        document.getElementById('dealButton').addEventListener('click', dealCards) -->

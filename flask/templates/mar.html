@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    mar
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block body %}
+
+{% if img_path %}
+    <img src="{{ url_for('static', filename=img_path) }}" alt="K线图"width="1500" height="1000">
+    {% else %}
+    <p>输入公司名字错误</p>
+    {% endif %}
+    <br>
+    <a href="/">back</a>
+</form>
+
+{% endblock %}
+

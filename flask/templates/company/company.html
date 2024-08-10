@@ -1,0 +1,29 @@
+{% extends "company/base2.html" %}
+
+{% block style %}
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+    }
+    .container {
+        margin: 20px;
+    }
+    a{
+        color: blue ;
+    }
+    a:visited {
+        color: grey;
+    }
+
+{% endblock %}
+
+{% block content %}
+            <div>
+                <!-- the name.items means use the dictionary at the html -->
+                {% for name, url in name.items() %}
+                <li><a href="{{url}}" target="_blank">{{name}}</a> </li>
+                {% endfor %}
+            </div>
+
+{% endblock %}
