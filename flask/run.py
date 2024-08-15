@@ -91,7 +91,7 @@ def logic3():
     return render_template('logic3.html')
 @app.route('/companyindex')
 def companyindex():
-    return render_template('company/index2.html')
+        return redirect("https://www.youtube.com/watch?v=8aHfeZdbrpM&t=11s")
 @app.route('/company',methods=['GET','POST'])
 def company():
     if request.method == 'POST':
@@ -104,13 +104,17 @@ def company():
             url=url_fun(basic,address,z)
             driver=create_driver()
             open_url(driver,url)
-            scroll_to_end(driver,page)
+            end=scroll_to_end(driver,page)
+            if end:
+                end="get the end"
+            else:
+                end="have more company position"
             name=get_company_names(driver)
             driver.quit()
         else:
             return render_template('company/wrong.html')
  
-    return render_template('company/company.html', name = name)
+    return render_template('company/company.html', name = name,end=end)
 @app.route('/bird')
 def bird():
     return redirect("https://youtu.be/jsGQNRdLhRo")

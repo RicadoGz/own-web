@@ -5,6 +5,8 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC  
 import time
+from selenium.common.exceptions import NoSuchElementException
+
 from selenium.webdriver.common.action_chains import ActionChains
 
 
@@ -35,6 +37,7 @@ def open_url(driver,url):
 def scroll_to_end(driver,page):
     page = page
     scroll_count = 0
+    end=False
 
     try:
         #  use the Xpath to find the scroll container
@@ -55,12 +58,27 @@ def scroll_to_end(driver,page):
             #  move to the scroll container element 
             ActionChains(driver).move_to_element(scroll_container).perform()
 
+
         except Exception as e:
             return 1
 
         scroll_count += 1
         if scroll_count >= page:
             break
+
+    try:
+        # 等待元素出现
+        end_of_list_element = WebDriverWait(driver, 3).until(
+            EC.presence_of_element_located((By.XPATH, '//span[contains(text(), "You\'ve reached the end of the list.")]'))
+        )
+        if end_of_list_element.is_displayed():
+            end = True
+            return end
+    except NoSuchElementException:
+        return end
+    except Exception as e:
+        return end
+    
 
 
 

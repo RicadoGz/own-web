@@ -15,11 +15,20 @@
     a:visited {
         color: grey;
     }
+    end{
+
+    }
 
 {% endblock %}
 
 {% block content %}
             <div>
+                <h1 >
+                    <color:red>
+                    {{end}}
+                </color:red>
+
+                </h1>
                 <!-- the name.items means use the dictionary at the html -->
                 {% for name, url in name.items() %}
                 <li><a href="{{url}}" target="_blank">{{name}}</a> </li>
