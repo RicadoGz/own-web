@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <style>
+        /* 设置全局样式 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 设置标题样式 */
+        h1 {
+            font-size: 3rem; /* 放大字体 */
+            margin-bottom: 20px;
+        }
+
+        /* 设置按钮样式 */
+        button {
+            font-size: 2rem; /* 放大字体 */
+            padding: 15px 30px; /* 增加内边距 */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* 设置按钮悬停效果 */
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* 设置消息样式 */
+        #message {
+            font-size: 2rem; /* 放大字体 */
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click the Button</h1>
+    <button onclick="sayHello()">Click Me!</button>
+    <p id="message"></p>
+
+    <script>
+        let times = 0;
+
+    function sayHello() {
+    const messageElement = document.getElementById("message");
+    times++; // 每次调用函数时递增 times
+    messageElement.textContent = `Hello, ${times}!`; // 使用模板字符串
+}
+    </script>
+</body>
+</html> 

@@ -91,7 +91,8 @@ def logic3():
     return render_template('logic3.html')
 @app.route('/companyindex')
 def companyindex():
-        return redirect("https://www.youtube.com/watch?v=8aHfeZdbrpM&t=11s")
+        return render_template('company/gdg.html')
+        #return redirect("https://www.youtube.com/watch?v=8aHfeZdbrpM&t=11s")
 @app.route('/company',methods=['GET','POST'])
 def company():
     if request.method == 'POST':
@@ -118,6 +119,9 @@ def company():
 @app.route('/bird')
 def bird():
     return redirect("https://youtu.be/jsGQNRdLhRo")
+@app.route('/a')
+def b():
+    return render_template('company/index2.html')
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 500))
     app.run(host='0.0.0.0', port=port)

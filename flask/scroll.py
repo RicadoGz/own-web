@@ -16,7 +16,11 @@ def create_driver():
     # the webdriver with connect with the web and the chromeoptions can setting the web
     chrome_options=webdriver.ChromeOptions()
     # make the web fun at the back
-    chrome_options.add_argument("--headless")
+    #
+    #
+    #chrome_options.add_argument("--headless")
+    #
+    #
     # make sure they read all the screen
     chrome_options.add_argument("--window-size=1920,1080")
     # webdriver.Chrome was one class for the selenium
@@ -33,6 +37,29 @@ def open_url(driver,url):
 
     except Exception as e:
         return 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def scroll_to_end(driver,page):
     page = page
@@ -106,7 +133,20 @@ def url_fun(basic,address,z):
         url = f'{basic}{address},{z}z?entry=ttu'
         return url
 def main():
-    pass
+    driver = create_driver()  # make the instance
+    
+    url = "https://www.google.ca/maps/search/software+company/@43.4811044,-80.5181209,13z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3Dm"  # the address of you want open
+    if open_url(driver, url) != 1:
+        print("url open")
+        
+        page_scrolls = 5  # make how much need to scroll
+        if scroll_to_end(driver, page_scrolls) is True:
+            print("its enf")
+        
+        company_names = get_company_names(driver)
+        print("name and link", company_names)
+        
+    driver.quit()
 
 if __name__ == "__main__":
     main()
